@@ -30,7 +30,7 @@
 	ctx.closePath();
 	ctx.fillStyle = "rgb(200,0,0)";
 	ctx.fill();
-	
+
 	ctx.beginPath();
 	ctx.moveTo(8 * WIDTH / 21, 8 * WIDTH / 21);
 	ctx.lineTo(WIDTH / 2, WIDTH / 2);
@@ -38,15 +38,15 @@
 	ctx.closePath();
 	ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
 	ctx.fill();
-	
-		ctx.beginPath();
+
+	ctx.beginPath();
 	ctx.moveTo(13 * WIDTH / 21, 8 * WIDTH / 21);
 	ctx.lineTo(WIDTH / 2, WIDTH / 2);
 	ctx.lineTo(13 * WIDTH / 21, 13 * WIDTH / 21);
 	ctx.closePath();
 	ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
 	ctx.fill();
-	 
+
 	 		ctx.beginPath();
 	ctx.moveTo(13 * WIDTH / 21, 13 * WIDTH / 21);
 	ctx.lineTo(WIDTH / 2, WIDTH / 2);
