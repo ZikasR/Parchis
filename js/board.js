@@ -62,11 +62,15 @@
 		ctx.strokeRect(5 * WIDTH / 9, i * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 	}
 
+	ctx.strokeRect(4 * WIDTH / 9, 7 * WIDTH / 21, WIDTH / 9, WIDTH / 21);
+
 	for (var i = 14; i < 21; i++) {
 		ctx.strokeRect(WIDTH / 3, i * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 		ctx.strokeRect(4 * WIDTH / 9, i * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 		ctx.strokeRect(5 * WIDTH / 9, i * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 	}
+
+	ctx.strokeRect(4 * WIDTH / 9, 13 * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 
 	for (var i = 0; i < 7; i++) {
 		ctx.strokeRect(i * WIDTH / 21, WIDTH / 3, WIDTH / 21, WIDTH / 9);
@@ -74,12 +78,36 @@
 		ctx.strokeRect(i * WIDTH / 21, 5 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
 	}
 
+	ctx.strokeRect(7 * WIDTH / 21, 4 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
+
 	for (var i = 14; i < 21; i++) {
 		ctx.strokeRect(i * WIDTH / 21, WIDTH / 3, WIDTH / 21, WIDTH / 9);
 		ctx.strokeRect(i * WIDTH / 21, 4 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
 		ctx.strokeRect(i * WIDTH / 21, 5 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
 	}
 
+	ctx.strokeRect(13 * WIDTH / 21, 4 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
+	
+	ctx.beginPath();
+	ctx.moveTo(WIDTH /3, WIDTH /3);
+	ctx.lineTo(8 * WIDTH / 21, 8 * WIDTH / 21);
+	ctx.stroke();
+	
+	ctx.beginPath();
+	ctx.moveTo(2*WIDTH /3, WIDTH /3);
+	ctx.lineTo(13 * WIDTH / 21, 8 * WIDTH / 21);
+	ctx.stroke();
+	
+	ctx.beginPath();
+	ctx.moveTo(WIDTH /3, 2*WIDTH /3);
+	ctx.lineTo(8 * WIDTH / 21, 13 * WIDTH / 21);
+	ctx.stroke();
+	
+	ctx.beginPath();
+	ctx.moveTo(2*WIDTH /3, 2*WIDTH /3);
+	ctx.lineTo(13 * WIDTH / 21, 13 * WIDTH / 21);
+	ctx.stroke();
+	
 	document.body.appendChild(canvas);
 
 } ());
