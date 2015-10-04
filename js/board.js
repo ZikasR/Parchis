@@ -8,20 +8,53 @@
 	canvas.width = WIDTH;
 	canvas.height = WIDTH;
 	canvas.style.border = "thick solid #000000";
+	
+	// ---------------------------------------------------------------
+	function Base(x, y, w, h, fill) {
 
-	ctx.fillStyle = "rgb(200,0,0)";
-    ctx.fillRect(0, 0, WIDTH / 3, WIDTH / 3);
+		this.x = x || 0;
+		this.y = y || 0;
+		this.w = w || 0;
+		this.h = h || 0;
+		this.fill = fill || '#FFFFFF';
+	};
 
-    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx.fillRect(2 * WIDTH / 3, 0, WIDTH / 3, WIDTH / 3);
+	Base.prototype.draw = function (context) {
+		context.fillStyle = this.fill;
+		context.fillRect(this.x, this.y, this.w, this.h);
+	};
+	// ---------------------------------------------------------------
+	
+		// ---------------------------------------------------------------
+	function Step(x, y, w, h, fill) {
 
-	ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
-    ctx.fillRect(0, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3);
+		this.x = x || 0;
+		this.y = y || 0;
+		this.w = w || 0;
+		this.h = h || 0;
+		this.fill = fill || '#FFFFFF';
+	};
 
-	ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
-    ctx.fillRect(2 * WIDTH / 3, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3);
+	Step.prototype.draw = function (context) {
+		context.fillStyle = this.fill;
+		context.fillRect(this.x, this.y, this.w, this.h);
+	};
+	// ---------------------------------------------------------------
 
-	ctx.strokeRect(8 * WIDTH / 21, 8 * WIDTH / 21, 5 * WIDTH / 21, 5 * WIDTH / 21);
+	
+	var redBase = new Base(0, 0, WIDTH / 3, WIDTH / 3, "rgb(200,0,0)");
+	var blueBase = new Base(2 * WIDTH / 3, 0, WIDTH / 3, WIDTH / 3, "rgba(0, 0, 200, 0.5)");
+	var greenBase = new Base(0, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3, "rgba(0, 255, 0, 0.5)");
+	var yellowBase = new Base(2 * WIDTH / 3, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3, "rgba(255, 255, 0, 0.5)");
+
+	redBase.draw(ctx);
+	blueBase.draw(ctx);
+	greenBase.draw(ctx);
+	yellowBase.draw(ctx);
+
+	var target = new Base(8 * WIDTH / 21, 8 * WIDTH / 21, 5 * WIDTH / 21, 5 * WIDTH / 21);
+	target.draw(ctx);
+
 
 	ctx.beginPath();
 	ctx.moveTo(8 * WIDTH / 21, 8 * WIDTH / 21);
@@ -87,27 +120,30 @@
 	}
 
 	ctx.strokeRect(13 * WIDTH / 21, 4 * WIDTH / 9, WIDTH / 21, WIDTH / 9);
-	
+
 	ctx.beginPath();
-	ctx.moveTo(WIDTH /3, WIDTH /3);
+	ctx.moveTo(WIDTH / 3, WIDTH / 3);
 	ctx.lineTo(8 * WIDTH / 21, 8 * WIDTH / 21);
 	ctx.stroke();
-	
+
 	ctx.beginPath();
-	ctx.moveTo(2*WIDTH /3, WIDTH /3);
+	ctx.moveTo(2 * WIDTH / 3, WIDTH / 3);
 	ctx.lineTo(13 * WIDTH / 21, 8 * WIDTH / 21);
 	ctx.stroke();
-	
+
 	ctx.beginPath();
-	ctx.moveTo(WIDTH /3, 2*WIDTH /3);
+	ctx.moveTo(WIDTH / 3, 2 * WIDTH / 3);
 	ctx.lineTo(8 * WIDTH / 21, 13 * WIDTH / 21);
 	ctx.stroke();
-	
+
 	ctx.beginPath();
-	ctx.moveTo(2*WIDTH /3, 2*WIDTH /3);
+	ctx.moveTo(2 * WIDTH / 3, 2 * WIDTH / 3);
 	ctx.lineTo(13 * WIDTH / 21, 13 * WIDTH / 21);
 	ctx.stroke();
-	
+
 	document.body.appendChild(canvas);
+
+
+
 
 } ());
