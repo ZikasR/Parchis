@@ -59,7 +59,7 @@
 			context.lineTo(2 * WIDTH / 3, 2 * WIDTH / 3);
 			context.stroke();
 			context.font = "22px serif";
-			context.strokeText(this.id, this.x + 5, this.y + 25);
+			context.strokeText(this.id, this.x + 60, this.y + 12);
 			return;
 		}
 		if (this.id === 25) {
@@ -70,6 +70,8 @@
 			context.lineTo(13 * WIDTH / 21, 8 * WIDTH / 21);
 			context.lineTo(2 * WIDTH / 3, WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x + 5, this.y + 80);
 			return;
 		}
 		if (this.id === 26) {
@@ -80,6 +82,8 @@
 			context.lineTo(13 * WIDTH / 21, 8 * WIDTH / 21);
 			context.lineTo(2 * WIDTH / 3, WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x - 8, this.y + 25);
 			return;
 		}
 
@@ -91,6 +95,8 @@
 			context.lineTo(8 * WIDTH / 21, 8 * WIDTH / 21);
 			context.lineTo(WIDTH / 3, WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x + 65, this.y + 25);
 			return;
 		}
 
@@ -102,6 +108,8 @@
 			context.lineTo(8 * WIDTH / 21, 8 * WIDTH / 21);
 			context.lineTo(WIDTH / 3, WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x + 5, this.y + 40);
 			return;
 		}
 
@@ -113,6 +121,8 @@
 			context.lineTo(8 * WIDTH / 21, 13 * WIDTH / 21);
 			context.lineTo(WIDTH / 3, 2 * WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x + 5, this.y + 25);
 			return;
 		}
 
@@ -124,6 +134,8 @@
 			context.lineTo(8 * WIDTH / 21, 13 * WIDTH / 21);
 			context.lineTo(WIDTH / 3, 2 * WIDTH / 3);
 			context.stroke();
+			context.font = "22px serif";
+			context.strokeText(this.id, this.x + 25, this.y + 78);
 			return;
 		}
 
@@ -164,8 +176,29 @@
 	};
 	// ---------------------------------------------------------------
 
+	// ---------------------------------------------------------------
+	function Pawn(id, x, y, radius, fill) {
+
+		this.id = id || 0;
+		this.x = x || 0;
+		this.y = y || 0;
+		this.radius = radius || 0;
+		this.startAngle = 0;
+		this.endAngle = 2 * Math.PI;
+		this.fill = fill || '#FFFFFF';
+	};
+
+	Pawn.prototype.draw = function (context) {
+		context.beginPath();
+		context.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle)
+		context.fillStyle = this.fill;
+		context.fill();
+		context.strokeStyle = "black";
+		context.stroke();
+	};
+	// ---------------------------------------------------------------
 	
-	var redBase = new Base(0, 0, WIDTH / 3, WIDTH / 3, "rgb(200,0,0)");
+	var redBase = new Base(0, 0, WIDTH / 3, WIDTH / 3, "rgba(200,0,0, 0.5)");
 	var blueBase = new Base(2 * WIDTH / 3, 0, WIDTH / 3, WIDTH / 3, "rgba(0, 0, 200, 0.5)");
 	var greenBase = new Base(0, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3, "rgba(0, 255, 0, 0.5)");
 	var yellowBase = new Base(2 * WIDTH / 3, 2 * WIDTH / 3, WIDTH / 3, WIDTH / 3, "rgba(255, 255, 0, 0.5)");
@@ -227,13 +260,13 @@
 		step.draw(context);
 	}
 
-	var target = new Target(8, 8, 13, 8, 'rgb(200,0,0)');
+	var target = new Target(8, 8, 13, 8, 'rgba(200,0,0, 0.5)');
 	target.draw(context);
 	step = new Step(33, 4 * WIDTH / 9, 0, WIDTH / 9, WIDTH / 21);
 	step.draw(context);
 
 	for (var i = 0; i < 7; i++) {
-		step = new Step(i, 4 * WIDTH / 9, (i + 1) * WIDTH / 21, WIDTH / 9, WIDTH / 21, 'rgb(200,0,0)', true);
+		step = new Step(i, 4 * WIDTH / 9, (i + 1) * WIDTH / 21, WIDTH / 9, WIDTH / 21, 'rgba(200,0,0, 0.5)', true);
 		step.draw(context);
 	}
 
@@ -261,13 +294,67 @@
 	target = new Target(13, 13, 8, 13, 'rgba(255, 255, 0, 0.5)');
 	target.draw(context);
 
-	step = new Step(67, 4 * WIDTH / 9, 20*WIDTH/21, WIDTH / 9, WIDTH / 21);
+	step = new Step(67, 4 * WIDTH / 9, 20 * WIDTH / 21, WIDTH / 9, WIDTH / 21);
 	step.draw(context);
 
 	for (var i = 0; i < 7; i++) {
 		step = new Step(i, 4 * WIDTH / 9, (19 - i) * WIDTH / 21, WIDTH / 9, WIDTH / 21, 'rgba(255, 255, 0, 0.5)', true);
 		step.draw(context);
 	}
+	/*****************************************/
+	var pawn = new Pawn(1, 8 * WIDTH / 63, 8 * WIDTH / 63, 20, 'rgba(200,0,0, 1)');
+	pawn.draw(context);
+
+	var pawn = new Pawn(2, 12 * WIDTH / 63, 8 * WIDTH / 63, 20, 'rgba(200,0,0, 1)');
+	pawn.draw(context);
+
+	var pawn = new Pawn(3, 8 * WIDTH / 63, 12 * WIDTH / 63, 20, 'rgba(200,0,0, 1)');
+	pawn.draw(context);
+
+	var pawn = new Pawn(4, 12 * WIDTH / 63, 12 * WIDTH / 63, 20, 'rgba(200,0,0, 1)');
+	pawn.draw(context);
+	/********************************************/
+	var pawn = new Pawn(1, 55 * WIDTH / 63, 8 * WIDTH / 63, 20, "rgba(0, 0, 200, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(2, 51 * WIDTH / 63, 8 * WIDTH / 63, 20, "rgba(0, 0, 200, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(3, 55 * WIDTH / 63, 12 * WIDTH / 63, 20, "rgba(0, 0, 200, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(4, 51 * WIDTH / 63, 12 * WIDTH / 63, 20, "rgba(0, 0, 200, 1)");
+	pawn.draw(context);
+	
+	/**************************************************/
+
+	var pawn = new Pawn(1, 51 * WIDTH / 63, 51 * WIDTH / 63, 20, "rgba(255, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(2, 55 * WIDTH / 63, 51 * WIDTH / 63, 20, "rgba(255, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(3, 51 * WIDTH / 63, 55 * WIDTH / 63, 20, "rgba(255, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(4, 55 * WIDTH / 63, 55 * WIDTH / 63, 20, "rgba(255, 255, 0, 1)");
+	pawn.draw(context);
+	
+	/**************************************************/
+
+	var pawn = new Pawn(1, 8 * WIDTH / 63, 51 * WIDTH / 63, 20, "rgba(0, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(2, 12 * WIDTH / 63, 51 * WIDTH / 63, 20, "rgba(0, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(3, 8 * WIDTH / 63, 55 * WIDTH / 63, 20, "rgba(0, 255, 0, 1)");
+	pawn.draw(context);
+
+	var pawn = new Pawn(4, 12 * WIDTH / 63, 55 * WIDTH / 63, 20, "rgba(0, 255, 0, 1)");
+	pawn.draw(context);
+	
+	/**************************************************/
 
 	document.body.appendChild(canvas);
 
